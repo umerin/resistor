@@ -21,7 +21,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     let gosa:[String] = ["± 1", "± 2", "± 5", "± 10"]
     //誤差
     
-    let obiColor:[UIColor] = [
+    let obiColor:[UIColor?] = [
         UIColor (red: 0.14, green: 0.14, blue: 0.14, alpha: 1.0),
         UIColor (red: 0.60, green: 0.40, blue: 0.20, alpha: 1.0),
         UIColor (red: 0.99, green: 0.20, blue: 0.25, alpha: 1.0),
@@ -41,9 +41,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     
     var number:[Int] = [1, 0, 0, 10 , 2, 0, 0]
     //pickerViewの「各列」の何番目を選択したか格納する配列（初期値のズレを反映してます）
-    
-    var kekkaNum:Int = 1
-    //抵抗値をいれる
 
     @IBOutlet weak var color1: UILabel!
     @IBOutlet weak var color2: UILabel!
@@ -51,7 +48,7 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var color4: UILabel!
     @IBOutlet weak var color5: UILabel!
     @IBOutlet weak var kekka: UILabel!
-    @IBOutlet weak var kekka1: UILabel!
+//    @IBOutlet weak var kekka1: UILabel!
     @IBOutlet weak var gosaL: UILabel!
     //抵抗の帯とか、ラベルの宣言
     
@@ -108,28 +105,81 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         case 1:number[1] = row
         case 2:number[2] = row
         case 3:number[3] = row
-        default:gosaL.text = gosa[row] as String
+        default:gosaL.text = gosa[row] as String    //誤差を表示するlabelに誤差の値を表示
             number[4] = row
         }
         //何個目のドラムで何個目の項目を選択したか
-        
-        number[5] = ((number[0] * 10) + number[1])
-        number[6] = (((number[0] * 100) + number[1] * 10) + number[2])
-        //大きな位の計算
 
         color1.backgroundColor = obiColor[number[0]]
         color2.backgroundColor = obiColor[number[1]]
-        color3.backgroundColor = obiColor[number[2]]
+        if number[2] < 10{
+            color3.backgroundColor = obiColor[number[2]]
+        }else{
+            color3.backgroundColor = obiColor[number[2] + 3]
+        }
         if number[3] < 11{
             color4.backgroundColor = obiColor[number[3]]
         }else{
             color4.backgroundColor = obiColor[number[3] + 2]
-            println(number[3])
         }
         color5.backgroundColor = obiColor[number[4] + 11]
         //帯の色の変更
         
-
+        var resisNum:Int64 = 1
+        
+        if number[3] == 10 {
+            
+            resisNum = (Int64(number[0]) * 10)
+            resisNum += number[1]
+            
+            if number[2] < 10{
+                for(var i = 0; i < number[2]; i++){
+                    resisNum *= 10
+                }
+            }else{
+                for(var i = 0; i < (number[2] - 9); i++){
+                    resisNum /= 10
+                }
+            }
+        }else if (number[3] > 10 && number[2] > 9){
+            print("エラー")
+            }else {
+                resisNum = (Int64(number[0]) * 100)
+                resisNum += (number[1] * 10)
+                resisNum += number[2]
+            if number[3] < 10{
+                for(var i = 0; i < number[3]; i++){
+                    resisNum *= 10
+                }
+            }else{
+                for(var i = 0; i < (number[3] - 10); i++){
+                    resisNum /= 10
+                }
+            }
+        }
+        
+        print(resisNum)
+        
+        if resisNum < 1000{
+            kekka.text = "\(resisNum)"
+        }else{
+            kekka.text = "まだ"
+        }
+        //抵抗値の計算
+        
+        if resisNum < 1000{
+            kekka.text = "\(resisNum)"
+        }else if resisNum < 1000000{
+            kekka.text = "\(resisNum / 1000)k"
+        }else if resisNum < 1000000000{
+            kekka.text = "\(resisNum / 1000000)M"
+        }else{
+            kekka.text = "\(resisNum / 1000000000)G"
+        }
+        
+        
+        
+        resisNum = 1
     }
 }
 
