@@ -8,4 +8,4 @@ Xcodeプロジェクトをまるごと
 Swift2.0
 
 #対応OS
-iOS7.1以上
+iOS9以上
