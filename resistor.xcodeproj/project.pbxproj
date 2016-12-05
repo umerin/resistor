@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		243472711B6B9C5900E7E471 /* teko-01.png in Resources */ = {isa = PBXBuildFile; fileRef = 243472701B6B9C5900E7E471 /* teko-01.png */; };
 		248E9D9E1B62552F00177B1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E9D9D1B62552F00177B1F /* AppDelegate.swift */; };
 		248E9DA01B62552F00177B1F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248E9D9F1B62552F00177B1F /* ViewController.swift */; };
 		248E9DA31B62552F00177B1F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 248E9DA11B62552F00177B1F /* Main.storyboard */; };
@@ -27,7 +26,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		243472701B6B9C5900E7E471 /* teko-01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "teko-01.png"; sourceTree = "<group>"; };
 		248E9D981B62552F00177B1F /* resistor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = resistor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		248E9D9C1B62552F00177B1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		248E9D9D1B62552F00177B1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +63,6 @@
 		248E9D8F1B62552F00177B1F = {
 			isa = PBXGroup;
 			children = (
-				243472701B6B9C5900E7E471 /* teko-01.png */,
 				248E9D9A1B62552F00177B1F /* resistor */,
 				248E9DB01B62552F00177B1F /* resistorTests */,
 				248E9D991B62552F00177B1F /* Products */,
@@ -207,7 +204,6 @@
 				248E9DA31B62552F00177B1F /* Main.storyboard in Resources */,
 				248E9DA81B62552F00177B1F /* LaunchScreen.xib in Resources */,
 				248E9DA51B62552F00177B1F /* Images.xcassets in Resources */,
-				243472711B6B9C5900E7E471 /* teko-01.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
