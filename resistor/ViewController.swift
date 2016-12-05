@@ -48,7 +48,6 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var color4: UILabel!
     @IBOutlet weak var color5: UILabel!
     @IBOutlet weak var kekka: UILabel!
-//    @IBOutlet weak var kekka1: UILabel!
     @IBOutlet weak var gosaL: UILabel!
     //抵抗の帯とか、ラベルの宣言
     
@@ -68,8 +67,8 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         //pickerViewの初期値
         
         
-        color1.backgroundColor = UIColor (red: 0.60, green: 0.40, blue: 0.20, alpha: 1.0)
-        color5.backgroundColor = UIColor (red: 0.82, green: 0.71, blue: 0.16, alpha: 1.0)
+        color1.backgroundColor = obiColor[11]
+        color5.backgroundColor = obiColor[13]
         //色の帯の初期値
     }
 
@@ -78,12 +77,12 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 5
     }
     //pickerViewのドラムの数
     
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch  component{
         case 0: return 10
         case 1: return 10
@@ -94,11 +93,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
     }
     //各ドラムの項目数
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return  color[component][row] as String
     }
     
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         //選択したとき
         switch component{
         case 0:number[0] = row
@@ -133,11 +132,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
             resisNum += number[1]
             
             if number[2] < 10{
-                for(var i = 0; i < number[2]; i++){
+                for i in 0 ..< number[2]{
                     resisNum *= 10
                 }
             }else{
-                for(var i = 0; i < (number[2] - 9); i++){
+                for i in 0 ..< (number[2] - 9){
                     resisNum /= 10
                 }
             }
@@ -148,11 +147,11 @@ class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSo
                 resisNum += (number[1] * 10)
                 resisNum += number[2]
             if number[3] < 10{
-                for(var i = 0; i < number[3]; i++){
+                for i in 0 ..< number[3]{
                     resisNum *= 10
                 }
             }else{
-                for(var i = 0; i < (number[3] - 10); i++){
+                for i in 0 ..< (number[3] - 10){
                     resisNum /= 10
                 }
             }
